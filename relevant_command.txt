@@ -3,24 +3,33 @@ hostname
 ssh cn506-07-r
 module load miniconda3/4.7.12.1
 
-cat GISAID_sequences_Delta_May122021.fasta | awk '{
+inputfile="GISAID_sequences_Delta_May122021.fasta"
+cat "$inputfile" | awk '{
 if (substr($0, 1, 1)==">") {filename=(substr($0,2) ".fasta")}
  print $0 >> filename
  close(filename)
 }'
 
+#remove the original file!
+rm "$inputfile"
 
+KSA_genome="../May12_target_KSA.fasta"
+
+j=1
 for i in *.fasta
 do
-cat ../May12_target_KSA.fasta "$i" > "$i".combined.fa
+cat "$KSA_genome" "$i" > "$j".combined.fa
+((j=j+1))
 done
 
 rm *.fasta
 
-for i in *.fa
+j=1
+
+for i in *.combined.fa
 do
-mafft "$i" > "$i"_align.fasta
-tn93 -t 1 -o ../tn93_May12/"$i".dst "$i"_align.fasta
+mafft "$i" > align_"$i".fasta
+tn93 -t 1 -o ../tn93_May12/"$i".dst.txt align_"$i".fasta
 done
 
 
