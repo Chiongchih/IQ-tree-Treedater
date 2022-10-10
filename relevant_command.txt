@@ -4,6 +4,10 @@ ssh cn506-07-r
 module load miniconda3/4.7.12.1
 
 inputfile="GISAID_sequences_Delta_May122021.fasta"
+date="July02"
+mkdir "$date"
+cp "$inputfile" ./"$date"/
+cd ./"$date"/
 cat "$inputfile" | awk '{
 if (substr($0, 1, 1)==">") {filename=(substr($0,2) ".fasta")}
  print $0 >> filename
