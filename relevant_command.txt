@@ -1,0 +1,40 @@
+cat GISAID_sequences_Delta_May122021.fasta | awk '{
+if (substr($0, 1, 1)==">") {filename=(substr($0,2) ".fasta")}
+ print $0 >> filename
+ close(filename)
+}'
+
+
+for i in *.fasta
+do
+cat ../May12_target_KSA.fasta "$i" > "$i".combined.fa
+done
+
+rm *.fasta
+
+for i in *.fa
+do
+mafft "$i" > "$i"_align.fasta
+tn93 -t 1 -o "$i".dst "$i"_align.fasta
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
