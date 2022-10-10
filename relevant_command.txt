@@ -36,7 +36,7 @@ mafft "$i" > align_"$i".fasta
 tn93 -t 1 -o ../tn93_May12/"$i".dst.txt align_"$i".fasta
 done
 
-
+cat *.dst.txt > ../results_tn93_"$date".txt
 
 
 
