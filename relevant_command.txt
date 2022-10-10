@@ -15,7 +15,7 @@ rm *.fasta
 for i in *.fa
 do
 mafft "$i" > "$i"_align.fasta
-tn93 -t 1 -o "$i".dst "$i"_align.fasta
+tn93 -t 1 -o ../tn93_May12/"$i".dst "$i"_align.fasta
 done
 
 
