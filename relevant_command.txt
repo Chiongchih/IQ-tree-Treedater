@@ -38,7 +38,9 @@ done
 
 cat *.dst.txt > ../results_tn93_"$date".txt
 
-
+find . -maxdepth 1 -type f -name "*.dst.txt" -print0 |
+sort -zV |
+xargs -0 cat >../all_tn93_July08.txt
 
 
 
