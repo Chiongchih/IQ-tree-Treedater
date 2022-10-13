@@ -50,6 +50,7 @@ sort -zV |
 xargs -0 cat >../all_tn93_July08.txt
 
 #then copy the filtered genome id and recruit sequences from COVID_mafft.py#
+#Remember to add the target Saudi genome into the sequences file#
 
 
 
