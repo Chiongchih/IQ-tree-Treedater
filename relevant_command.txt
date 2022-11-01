@@ -58,6 +58,8 @@ cd "$sample"
 cp ../"$sample"_readseq.msf ./
 ../iqtree2 -s "$sample"_readseq.msf -st DNA -m HKY+F -bb 1000 -alrt 1000
 cp "$sample"_readseq.msf.treefile ../"$sample"_readseq.msf.treefile.txt
+cd ..
+
 
 
 
