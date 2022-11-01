@@ -52,6 +52,12 @@ xargs -0 cat >../all_tn93_July08.txt
 #then copy the filtered genome id and recruit sequences from COVID_mafft.py#
 #Remember to add the target Saudi genome into the sequences file#
 
+sample='Dec17_108Y'
+mkdir "$sample"
+cd "$sample"
+cp ../"$sample"_readseq.msf ./
+../iqtree2 -s "$sample"_readseq.msf -st DNA -m HKY+F -bb 1000 -alrt 1000
+cp "$sample"_readseq.msf.treefile ../"$sample"_readseq.msf.treefile.txt
 
 
 
